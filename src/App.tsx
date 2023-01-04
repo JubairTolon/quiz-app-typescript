@@ -20,6 +20,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
+
   // console.log(fetchQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY))
   // console.log(questions);
 
@@ -69,7 +70,7 @@ function App() {
   };
 
   return (
-    <div className="">
+    <div className="app">
       <h1>REACT QUIZ</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
         <button className='start' onClick={startTrivia}>

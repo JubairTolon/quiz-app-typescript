@@ -1,5 +1,6 @@
-import React, { FC, MouseEvent } from 'react';
+import React, { FC, MouseEvent, useState } from 'react';
 import { AnswerObject } from '../App';
+import './QuestionCard.css';
 
 
 type Props = {
@@ -11,21 +12,30 @@ type Props = {
     totalQuestions: number
 }
 
+
 const QuestionCard: FC<Props> = ({ question,
     answers,
     callback,
     userAnswer,
     questionNr,
     totalQuestions }) => {
+
+    const [clicked, setClicked] = useState<boolean>(false);
+    const [correct, setCorrect] = useState<boolean>(false);
+
+    console.log(answers)
+    console.log(userAnswer)
     return (
-        <div>
+        <div className='QuestionCard'>
             <p className='number'>Question: {questionNr} / {totalQuestions}</p>
             <p dangerouslySetInnerHTML={{ __html: question }}></p>
-            <div>
+            <div className='answer-main'>
                 {
                     answers.map(answer => (
-                        <div key={answer}>
+                        <div className='answer'
+                            key={answer}>
                             <button
+                                className='answer-button'
                                 disabled={userAnswer ? true : false}
                                 onClick={callback}
                                 value={answer}>
